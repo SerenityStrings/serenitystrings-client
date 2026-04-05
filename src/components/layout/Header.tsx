@@ -7,10 +7,12 @@ import Link from "next/link";
 
 const Header = () => {
     return(
-        <header className = "flex justify-between items-center p-4 border-b border-gray-700">
-            <h1 className = "text-xl font-bold"> SerenityStrings </h1>
-
-            <nav className = "flex gap-4">
+        <header className = "flex justify-between items-center p-4 border-b border-gray-400">
+            <div className = "flex gap-3 items-center">
+                <img src = "/SerenityStrings.png" alt = "SerenityStrings Logo" width = "60"/>
+                <h1 className = "text-4xl"> SerenityStrings </h1>
+            </div>
+            <nav className = "flex gap-5">
                 <Link href = "/"> Home </Link>
                 <Link href = "/fretboard"> Fretboard </Link>
                 <Link href = "/progressions"> Progressions </Link>

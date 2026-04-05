@@ -2,6 +2,12 @@
 
 import React from 'react'
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Fretboard',
+};
+
 const FretboardPage = () => {
   return (
     <div>Fretboard Page</div>

@@ -7,10 +7,16 @@
 
 import React from 'react'
 
-const DefaultPage = () => {
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Home | SerenityStrings',
+};
+
+const HomePage = () => {
   return (
-    <div>Default Page</div>
+    <div>Home Page</div>
   )
 }
 
-export default DefaultPage
+export default HomePage

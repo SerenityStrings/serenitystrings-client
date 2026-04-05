@@ -1,6 +1,16 @@
 import "./globals.css";
+import { Metadata } from 'next';
 
 import Header from "@/components/layout/Header";
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s | SerenityStrings',
+    default: 'SerenityStrings',
+  },
+  description: "Strum To Your Heart's Content",
+  // metadataBase: new URL(''),
+};
 
 // This is the main layout component for the entire app
 // "export default" means this is the primary component exported from this file
