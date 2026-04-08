@@ -10,9 +10,9 @@ const Header = () => {
         <header className = "flex justify-between items-center p-4 border-b border-gray-400">
             <div className = "flex gap-3 items-center">
                 <img src = "/SerenityStrings.png" alt = "SerenityStrings Logo" width = "60"/>
-                <h1 className = "text-4xl"> SerenityStrings </h1>
+                {/*<h1 className = "text-4xl"> SerenityStrings </h1>*/}
             </div>
-            <nav className = "flex gap-5">
+            <nav className = "flex gap-5 text-2xl">
                 <Link href = "/"> Home </Link>
                 <Link href = "/fretboard"> Fretboard </Link>
                 <Link href = "/progressions"> Progressions </Link>

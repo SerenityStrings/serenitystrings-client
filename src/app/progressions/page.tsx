@@ -10,7 +10,9 @@ export const metadata: Metadata = {
 
 const ProgressionsPage = () => {
   return (
-    <div>Progressions Page</div>
+    <main className = "">
+      Progressions Page
+    </main>
   )
 }
 

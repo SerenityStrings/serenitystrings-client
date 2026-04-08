@@ -10,7 +10,9 @@ export const metadata: Metadata = {
 
 const TunerPage = () => {
   return (
-    <div>Tuner Page</div>
+    <main className = "">
+      Tuner Page
+    </main>
   )
 }
 

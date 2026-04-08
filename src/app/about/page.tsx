@@ -11,7 +11,9 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
   return (
-    <div>About Page</div>
+    <main className = "">
+      About Page
+    </main>
   )
 }
 

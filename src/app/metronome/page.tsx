@@ -10,7 +10,9 @@ export const metadata: Metadata = {
 
 const MetronomePage = () => {
   return (
-    <div>Metronome Page</div>
+    <main className = "">
+      Metronome Page
+    </main>
   )
 }
 

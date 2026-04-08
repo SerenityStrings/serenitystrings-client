@@ -2,6 +2,7 @@ import "./globals.css";
 import { Metadata } from 'next';
 
 import Header from "@/components/layout/Header";
+import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
   title: {
@@ -24,12 +25,15 @@ const RootLayout = ({
 }) => {
   return (
     <html lang = "en">
-      <body>
+      <body className = "flex flex-col min-h-screen"> {/* "Stack children vertically and make the container at least full screen height" */}
         <Header />
+        <main className = "grow"> {/* "Take up all remaining available space" */}
+
         {children}    {/* This is where the content of each page will be rendered. 
                       The Header component will be displayed on all pages, 
                       and the specific content for each page will be injected here based on the routing. */}
-        
+        </main>
+        <Footer />
       </body>
     </html>
   )
