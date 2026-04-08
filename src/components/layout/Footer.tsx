@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -18,6 +18,16 @@ const Footer = () => {
       >
         <FaGithub size = {30} className = "inline-block mr-1" />
          GitHub
+      </Link>
+
+      <Link 
+      href = "https://www.linkedin.com/in/kevin-babakhani/" 
+      className = "text-sm text-gray-600 hover:text-white"
+      target="_blank" 
+      rel="noopener noreferrer"
+      >
+        <FaLinkedin size = {30} className = "inline-block mr-1 ml-3" />
+         LinkedIn
       </Link>
     </footer>
   );
