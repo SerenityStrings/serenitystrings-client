@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 const HomePage = () => {
   return (
-    <main className = "p-8 max-w-6xl mx-auto grow">
+    <main className = "p-8 max-w-6xl mx-auto">
       
       {/* Hero Section */}
       <section className = "text-center mb-12">
