@@ -74,22 +74,22 @@ const FretboardPage = () => {
       <section className = "bg-slate-800 p-6 rounded-xl border border-slate-700 mb-6">
 
         {/* This wraps all 6 string rows vertically */}
-        <div className = "flex flex-col gap-2">
-
+        <div className = "flex flex-col">
           {/* Loop 6 times to create 6 strings */}
           {
                                           // Current element value, current index 
             Array.from({ length: 6 }).map((_, rowIndex) => (
-
+              
               // Each row represents ONE string
               <div
                 key = {rowIndex} // Required by React to track elements efficiently
-                className = "grid gap-2" // Grid layout for frets + spacing between cells
+                className = "grid relative" // Grid layout for frets + spacing between cells
                 
                 // create a CSS Grid container with exactly 24 columns that are all equally sized, 
                 // taking up the full width of the container.
                 style = {{ gridTemplateColumns: "repeat(24, 1fr)" }}
               >
+              <hr className = "absolute top-4 w-full border z-10"/>
               
                 {/* Inner loop: creates 24 frets for each string */}
                 {
@@ -99,14 +99,12 @@ const FretboardPage = () => {
                     // Each cell represents ONE fret position
                     <div
                       key = {colIndex} // Unique key for each cell
-                      className = "bg-slate-600 h-6 flex items-center justify-center text-xs"
+                      className = "h-8 flex items-center justify-center border-l-3 border-r-3 border-gray-600"
                       // bg-slate-600 → visible cell color
                       // h-6 → cell height
                       // flex + items-center + justify-center → centers text inside
                       // text-xs → small font for numbers
                     >
-                      {/* Display fret number (1–24) for now (debugging/visual aid) */}
-                      {colIndex + 1}
                     </div>
 
                   ))
