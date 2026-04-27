@@ -10,6 +10,23 @@ export const metadata: Metadata = {
 };
 
 const FretboardPage = () => {
+
+  const totalFrets = 24;
+  const stringHeights = [1, 1.6, 2, 2.4, 2.8, 3.7]; // Thickness of each string in pixels
+
+  const tunings = {
+    standard: ["E","B","G","D","A","E"],
+    dropD: ["D","B","G","D","A","E"]
+  }
+  
+  const activeTuning = tunings.standard;
+  const totalStrings = activeTuning.length;
+  const spacing = 100 / totalStrings;
+  const nutWidth = 6;
+
+  const getStringPosition = (rowIndex: number) =>
+    ((rowIndex + 0.5) / totalStrings) * 100;
+
   return (
     <main className = "p-4 sm:p-6 lg:p-8 mt-10 max-w-6xl mx-auto border border-slate-300 bg-slate-800">
       <h1 className = "text-3xl font-bold mb-6"> Interactive Fretboard </h1>
@@ -84,8 +101,6 @@ const FretboardPage = () => {
       {/* Main fretboard section container (the dark box) */}
 
       {
-      // TODO: Add different spacing between each fret (Big -> Smaller -> Small)
-
       // TODO: Add fret numbers at the bottom of the fretboard (maybe only for frets 3, 5, 7, 9, 12)
       }
 
@@ -99,7 +114,7 @@ const FretboardPage = () => {
           </h2>
 
           {/* 🎯 FRETBOARD BOX */}
-          <div className="relative w-full max-w-5xl aspect-[4/1]">
+          <div className="relative w-full max-w-5xl aspect-[4/2] md:aspect-[4/1]">
 
             {/* 🎯 FRETS LAYER (BACKGROUND GRID) */}
 
@@ -111,7 +126,7 @@ const FretboardPage = () => {
               style={{ gridTemplateColumns: "repeat(24, 1fr)" }}
             >
 
-              {Array.from({ length: 24 }).map((_, colIndex) => (
+              {Array.from({ length: totalFrets }).map((_, colIndex) => (
                 <div
                   key={colIndex}
                   className={clsx(
@@ -121,35 +136,48 @@ const FretboardPage = () => {
               ))}
             </div>
 
-            {/* 🎯 STRINGS LAYER (REAL POSITIONING) */}
+            {/* Strings */}
             <div className="absolute inset-0 z-0">
 
-              {Array.from({ length: 6 }).map((_, rowIndex) => {
-
-                const totalStrings = 6;
-                const spacing = 100 / totalStrings;
-
-                let topValue = spacing / 2 + rowIndex * spacing;
+              {stringHeights.map((heightOfString, rowIndex) => {
 
                 return (
                   <div
                     key={rowIndex}
-                    className={clsx(
-                      "absolute border-gray-300",
-                      rowIndex === 0 && "border",
-                      rowIndex === 1 && "border-[1.6px]",
-                      rowIndex === 2 && "border-[2px]",
-                      rowIndex === 3 && "border-[2.4px]",
-                      rowIndex === 4 && "border-[2.8px]",
-                      rowIndex === 5 && "border-[3.7px]"
-                    )}
+                    className={
+                      "absolute bg-gray-300"
+                    }
                     style={{
-                      top: `${topValue}%`,
-                      left: "6px",
-                      width: "calc(100% - 6px)",
-                      transform: "translateY(-4px)"
+                      top: `${getStringPosition(rowIndex)}%`,
+                      left: `${nutWidth}px`,
+                      width: `calc(100% - ${nutWidth}px)`,
+                      transform: "translateY(-50%)",
+                      height: `${heightOfString}px`
                     }}
                   />
+                );
+              })}
+
+            </div>
+
+            {/* String Labels */}
+            <div className="absolute inset-0 z-20">
+
+              {activeTuning.map((note, rowIndex) => {
+
+                return (
+                  <div
+                    key={rowIndex}
+                    className={"absolute border-gray-300"}
+                    style={{
+                      top: `${getStringPosition(rowIndex)}%`,
+                      left: "-16px",
+                      transform: "translateY(-50%)"
+                    }}
+                  >
+                    {note}
+                    
+                  </div>
                 );
               })}
 
