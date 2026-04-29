@@ -13,6 +13,7 @@ const FretboardPage = () => {
 
   const totalFrets = 24;
   const stringHeights = [1, 1.6, 2, 2.4, 2.8, 3.7]; // Thickness of each string in pixels
+  const fretWidth = 2;
 
   const tunings = {
     standard: ["E","B","G","D","A","E"],
@@ -21,11 +22,15 @@ const FretboardPage = () => {
   
   const activeTuning = tunings.standard;
   const totalStrings = activeTuning.length;
-  const spacing = 100 / totalStrings;
-  const nutWidth = 6;
+  const nutWidth = 9;
+  const stringLabelOffset = -16;
+  // const startingFretWidth = 100 - nutWidth;
 
   const getStringPosition = (rowIndex: number) =>
     ((rowIndex + 0.5) / totalStrings) * 100;
+
+  const getFretPosition = (fretNumber: number) =>
+    ((fretNumber) / totalFrets)
 
   return (
     <main className = "p-4 sm:p-6 lg:p-8 mt-10 max-w-6xl mx-auto border border-slate-300 bg-slate-800">
@@ -119,10 +124,39 @@ const FretboardPage = () => {
             {/* 🎯 FRETS LAYER (BACKGROUND GRID) */}
 
             {/* Nut */}
-            <div className="absolute left-0 top-0 h-full bg-black z-10 w-[5px] sm:w-[7px] md:w-[9px]" />
+            <div className="absolute left-0 top-0 h-full bg-black z-10 w-[9px] sm:w-[7px] md:w-[9px]" />
 
+            {/* Frets */}
             <div
-              className="absolute inset-0 grid"
+              className="absolute inset-0 z-0"
+              style={{ gridTemplateColumns: "repeat(24, 1fr)" }}
+            >
+
+              {Array.from({ length: totalFrets }, (_, i) => i + 1).map((fretNumber) => (
+                <div
+                  key={fretNumber}
+                  className={clsx(
+                    "bg-gray-600 absolute",
+                    fretNumber == 3 && "bg-white absolute",
+                    fretNumber == 5 && "bg-white absolute",
+                    fretNumber == 7 && "bg-white absolute",
+                    fretNumber == 9 && "bg-white absolute",
+                    fretNumber == 12 && "bg-white absolute",
+                    )
+                  }
+                  style={{
+                    left: `calc(${nutWidth}px + ((100% - ${nutWidth}px) * ${getFretPosition(fretNumber)}))`,
+                    width: `${fretWidth}px`,
+                    height: "100%",
+                    transform: "translateX(-100%)"
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Fret Dots */}
+            {/* <div
+              className="absolute inset-0 z-20"
               style={{ gridTemplateColumns: "repeat(24, 1fr)" }}
             >
 
@@ -134,10 +168,10 @@ const FretboardPage = () => {
                   )}
                 />
               ))}
-            </div>
+            </div> */}
 
             {/* Strings */}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-10">
 
               {stringHeights.map((heightOfString, rowIndex) => {
 
@@ -161,7 +195,7 @@ const FretboardPage = () => {
             </div>
 
             {/* String Labels */}
-            <div className="absolute inset-0 z-20">
+            <div className="absolute inset-0 z-30">
 
               {activeTuning.map((note, rowIndex) => {
 
@@ -171,7 +205,7 @@ const FretboardPage = () => {
                     className={"absolute border-gray-300"}
                     style={{
                       top: `${getStringPosition(rowIndex)}%`,
-                      left: "-16px",
+                      left: `${stringLabelOffset}px`,
                       transform: "translateY(-50%)"
                     }}
                   >
