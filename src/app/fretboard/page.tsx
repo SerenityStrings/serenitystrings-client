@@ -19,6 +19,8 @@ const FretboardPage = () => {
     standard: ["E","B","G","D","A","E"],
     dropD: ["D","B","G","D","A","E"]
   }
+
+  const markedFrets = [3, 5, 7, 9, 12];
   
   const activeTuning = tunings.standard;
   const totalStrings = activeTuning.length;
@@ -31,6 +33,9 @@ const FretboardPage = () => {
 
   const getFretPosition = (fretNumber: number) =>
     ((fretNumber) / totalFrets)
+
+  const getFretCenterPosition = (fretNumber: number) =>
+    ((fretNumber - 0.5) / totalFrets)
 
   return (
     <main className = "p-4 sm:p-6 lg:p-8 mt-10 max-w-6xl mx-auto border border-slate-300 bg-slate-800">
@@ -105,10 +110,6 @@ const FretboardPage = () => {
 
       {/* Main fretboard section container (the dark box) */}
 
-      {
-      // TODO: Add fret numbers at the bottom of the fretboard (maybe only for frets 3, 5, 7, 9, 12)
-      }
-
       {/* Fretboard Display */}
       <section className="bg-slate-800 p-6 rounded-xl border border-slate-700 mb-6">
 
@@ -135,14 +136,8 @@ const FretboardPage = () => {
               {Array.from({ length: totalFrets }, (_, i) => i + 1).map((fretNumber) => (
                 <div
                   key={fretNumber}
-                  className={clsx(
-                    "bg-gray-600 absolute",
-                    fretNumber == 3 && "bg-white absolute",
-                    fretNumber == 5 && "bg-white absolute",
-                    fretNumber == 7 && "bg-white absolute",
-                    fretNumber == 9 && "bg-white absolute",
-                    fretNumber == 12 && "bg-white absolute",
-                    )
+                  className={
+                    "bg-gray-600 absolute"
                   }
                   style={{
                     left: `calc(${nutWidth}px + ((100% - ${nutWidth}px) * ${getFretPosition(fretNumber)}))`,
@@ -155,20 +150,42 @@ const FretboardPage = () => {
             </div>
 
             {/* Fret Dots */}
-            {/* <div
-              className="absolute inset-0 z-20"
-              style={{ gridTemplateColumns: "repeat(24, 1fr)" }}
-            >
+            <div className="absolute inset-0 z-20">
 
-              {Array.from({ length: totalFrets }).map((_, colIndex) => (
+              {markedFrets.map((fretWithDot) =>
+                fretWithDot === 12 ? (
+                  <React.Fragment key={fretWithDot}>
+                    
+                    <div
+                      className="md:h-[25px] md:w-[25px] h-[8px] w-[8px] md:top-[28.3%] top-[31%] -translate-x-[0.5px] rounded-full bg-white absolute"
+                      style={{
+                        left: `calc(${nutWidth}px + ((100% - ${nutWidth}px) * ${getFretCenterPosition(fretWithDot)}))`,
+                        transform: "translateX(-53%)",
+                      }}
+                    />
+
+                    <div
+                      className="md:h-[25px] md:w-[25px] h-[8px] w-[8px] md:top-[62%] top-[64.5%] -translate-x-[0.5px] rounded-full bg-white absolute"
+                      style={{
+                        left: `calc(${nutWidth}px + ((100% - ${nutWidth}px) * ${getFretCenterPosition(fretWithDot)}))`,
+                        transform: "translateX(-53%)",
+                      }}
+                    />
+
+                  </React.Fragment>
+                ) :
                 <div
-                  key={colIndex}
-                  className={clsx(
-                    "border-gray-600 border-r-2 h-full"
-                  )}
+                  key={fretWithDot}
+                  className={
+                    "md:h-[25px] md:w-[25px] h-[8px] w-[8px] md:top-[45%] top-[47.5%] -translate-x-[0.5px] rounded-full bg-white absolute"
+                  }
+                  style={{
+                    left: `calc(${nutWidth}px + ((100% - ${nutWidth}px) * ${getFretCenterPosition(fretWithDot)}))`,
+                    transform: "translateX(-53%)"
+                  }}
                 />
-              ))}
-            </div> */}
+              )}
+            </div>
 
             {/* Strings */}
             <div className="absolute inset-0 z-10">
