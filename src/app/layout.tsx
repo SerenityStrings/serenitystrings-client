@@ -25,9 +25,9 @@ const RootLayout = ({
 }) => {
   return (
     <html lang = "en">
-      <body className = "flex flex-col min-h-screen"> {/* "Stack children vertically and make the container at least full screen height" */}
+      <body className = "flex flex-col h-screen overflow-x-hidden">
         <Header />
-        <main className = "grow"> {/* "Take up all remaining available space" */}
+        <main className = "overflow-x-hidden">
 
         {children}    {/* This is where the content of each page will be rendered. 
                       The Header component will be displayed on all pages, 

@@ -38,15 +38,15 @@ const FretboardPage = () => {
     ((fretNumber - 0.5) / totalFrets)
 
   return (
-    <main className = "p-4 sm:p-6 lg:p-8 mt-10 max-w-6xl mx-auto border border-slate-300 bg-slate-800">
-      <h1 className = "text-3xl font-bold mb-6"> Interactive Fretboard </h1>
+    <main className = "p-4 sm:p-6 lg:p-8 md:mt-5 max-w-5xl mx-auto border border-slate-300 bg-slate-800">
+      <h1 className = "text-2xl md:text-3xl font-bold mb-3"> Interactive Fretboard </h1>
 
       {/* Controls */}
-      <section className = "bg-slate-800 items-end rounded-xl border border-slate-700 mb-6">
-        <div className = "flex flex-wrap gap-6 items-center justify-center">
+      <section className = "bg-slate-800 items-end rounded-xl border border-slate-700 m-2 mb-4 md:m-3">
+        <div className = "flex flex-wrap gap-2 md:gap-6 items-center justify-center">
 
-            {/* Key */}
-          <div className = "flex flex-col m-6">
+          {/* Key */}
+          <div className = "flex flex-col m-2 md:m-3">
             <label className = "text-sm text-slate-400"> Key </label>
             <select className = "w-full sm:w-40 bg-slate-700 p-2 rounded">
               <option> C </option>
@@ -64,8 +64,8 @@ const FretboardPage = () => {
             </select>
           </div>
 
-            {/* Scale */}
-          <div className = "flex flex-col m-6">
+          {/* Scale */}
+          <div className = "flex flex-col m-2 md:m-3">
             <label className = "text-sm text-slate-400"> Scale </label>
             <select className = "w-full sm:w-40 bg-slate-700 p-2 rounded">
               <option> None </option>
@@ -74,8 +74,8 @@ const FretboardPage = () => {
             </select>
           </div>
 
-            {/* Chord */}
-          <div className = "flex flex-col m-6">
+          {/* Chord */}
+          <div className = "flex flex-col m-2 md:m-3">
             <label className = "text-sm text-slate-400"> Chord </label>
             <select className = "w-full sm:w-40 bg-slate-700 p-2 rounded">
               <option> I (Major) </option>
@@ -89,8 +89,8 @@ const FretboardPage = () => {
             </select>
           </div>
 
-            {/* Tuning */}
-          <div className = "flex flex-col m-6">
+          {/* Tuning */}
+          <div className = "flex flex-col m-2 md:m-3">
             <label className = "text-sm text-slate-400"> Tuning </label>
             <select className = "w-full sm:w-40 bg-slate-700 p-2 rounded">
               <option> Standard </option>
@@ -98,7 +98,7 @@ const FretboardPage = () => {
             </select>
           </div>
 
-          <div className = "flex flex-col m-6">
+          <div className = "flex flex-col m-2 md:m-3">
             <button className="bg-indigo-500 px-4 mt-5 py-2 rounded hover:bg-indigo-400">
               Clear
             </button>
@@ -111,16 +111,16 @@ const FretboardPage = () => {
       {/* Main fretboard section container (the dark box) */}
 
       {/* Fretboard Display */}
-      <section className="bg-slate-800 p-6 rounded-xl border border-slate-700 mb-6">
+      <section className="bg-slate-800 p-6 rounded-xl border border-slate-700 mb-4">
 
         <div className="relative flex flex-col items-center">
 
-          <h2 className="font-semibold mb-4 text-center text-2xl">
+          <h2 className="font-semibold mb-4 text-center text-xl md:text-2xl">
             Fretboard
           </h2>
 
           {/* 🎯 FRETBOARD BOX */}
-          <div className="relative w-full max-w-5xl aspect-[4/2] md:aspect-[4/1]">
+          <div className="relative w-full max-w-4xl aspect-[4/2] md:aspect-[4/1]">
 
             {/* 🎯 FRETS LAYER (BACKGROUND GRID) */}
 
@@ -157,7 +157,7 @@ const FretboardPage = () => {
                   <React.Fragment key={fretWithDot}>
                     
                     <div
-                      className="md:h-[25px] md:w-[25px] h-[8px] w-[8px] md:top-[28.3%] top-[31%] -translate-x-[0.5px] rounded-full bg-white absolute"
+                      className="md:h-[25px] md:w-[25px] h-[8px] w-[8px] md:top-[27.6%] top-[31%] -translate-x-[0.5px] rounded-full bg-white absolute"
                       style={{
                         left: `calc(${nutWidth}px + ((100% - ${nutWidth}px) * ${getFretCenterPosition(fretWithDot)}))`,
                         transform: "translateX(-53%)",
@@ -165,7 +165,7 @@ const FretboardPage = () => {
                     />
 
                     <div
-                      className="md:h-[25px] md:w-[25px] h-[8px] w-[8px] md:top-[62%] top-[64.5%] -translate-x-[0.5px] rounded-full bg-white absolute"
+                      className="md:h-[25px] md:w-[25px] h-[8px] w-[8px] md:top-[61.2%] top-[64.5%] -translate-x-[0.5px] rounded-full bg-white absolute"
                       style={{
                         left: `calc(${nutWidth}px + ((100% - ${nutWidth}px) * ${getFretCenterPosition(fretWithDot)}))`,
                         transform: "translateX(-53%)",
@@ -177,7 +177,7 @@ const FretboardPage = () => {
                 <div
                   key={fretWithDot}
                   className={
-                    "md:h-[25px] md:w-[25px] h-[8px] w-[8px] md:top-[45%] top-[47.5%] -translate-x-[0.5px] rounded-full bg-white absolute"
+                    "md:h-[25px] md:w-[25px] h-[8px] w-[8px] md:top-[44.5%] top-[47.5%] -translate-x-[0.5px] rounded-full bg-white absolute"
                   }
                   style={{
                     left: `calc(${nutWidth}px + ((100% - ${nutWidth}px) * ${getFretCenterPosition(fretWithDot)}))`,
@@ -240,7 +240,7 @@ const FretboardPage = () => {
       </section>
 
       {/* Legend */}
-      <section className = "bg-slate-800 p-6 rounded-xl border border-slate-700 mb-6">
+      <section className = "bg-slate-800 p-4 md:p-5 rounded-xl border border-slate-700 ">
       <h2 className="font-semibold mb-2">Legend</h2>
         <div className = "flex gap-6 text-sm text-slate-400">
           <span>● Root Note</span>

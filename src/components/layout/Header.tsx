@@ -7,19 +7,24 @@ import Link from "next/link";
 
 const Header = () => {
     return(
-        <header className = "flex justify-between items-center p-4 border-b border-gray-400">
-            <div className = "flex gap-3 items-center">
-                <img src = "/SerenityStrings.png" alt = "SerenityStrings Logo" width = "60"/>
-                {/*<h1 className = "text-4xl"> SerenityStrings </h1>*/}
-            </div>
-            <nav className = "flex gap-5 text-2xl">
-                <Link href = "/"> Home </Link>
-                <Link href = "/fretboard"> Fretboard </Link>
-                <Link href = "/progressions"> Progressions </Link>
-                <Link href = "/metronome"> Metronome </Link>
-                <Link href = "/tuner"> Tuner </Link>
-                <Link href = "/about"> About </Link>
-            </nav>
+        <header className="flex flex-col md:flex-row md:justify-between items-center p-4 border-b border-gray-400 gap-4">
+
+        <div className="flex items-center w-20">
+            <img
+                src="/SerenityStrings.png"
+                alt="SerenityStrings Logo"
+            />
+        </div>
+
+        <nav className="flex flex-wrap justify-center gap-3 md:gap-4 text-sm md:text-3xl">
+            <Link href="/">Home</Link>
+            <Link href="/fretboard">Fretboard</Link>
+            <Link href="/progressions">Progressions</Link>
+            <Link href="/metronome">Metronome</Link>
+            <Link href="/tuner">Tuner</Link>
+            <Link href="/about">About</Link>
+        </nav>
+
         </header>
     );
 }

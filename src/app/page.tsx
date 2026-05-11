@@ -16,20 +16,25 @@ export const metadata: Metadata = {
 
 const HomePage = () => {
   return (
-    <main className = "p-8 max-w-6xl mx-auto">
+    <main className = "p-4 md:p-8 max-w-6xl mx-auto">
       
       {/* Hero Section */}
-      <section className = "text-center mb-12">
-        <h1 className = "text-6xl font-bold mb-4">
+      <section className = "text-center mb-6 md:mb-12">
+        <h1 className = "text-3xl md:text-6xl font-bold mb-4">
           SerenityStrings
         </h1>
-        <p className = "text-slate-400 text-lg mb-20">
-          Welcome to SerenityStrings, your ultimate companion for guitar practice! Whether you're a beginner or an experienced guitarist, our suite of tools is designed to help you improve your skills and enjoy the journey of learning the guitar. From interactive fretboards to customizable metronomes and tuners, SerenityStrings offers everything you need to enhance your practice sessions and achieve your musical goals. Explore our features and start your musical journey with us today!
+        <p className = "text-slate-400 text-sm md:text-lg mb-8 md:mb-20">
+          Welcome to SerenityStrings, your ultimate companion for guitar practice! 
+          Whether you're a beginner or an experienced guitarist, our suite of tools 
+          is designed to help you improve your skills and enjoy the journey of learning the guitar. 
+          From interactive fretboards to customizable metronomes and tuners, SerenityStrings offers 
+          everything you need to enhance your practice sessions and achieve your musical goals. 
+          Explore our features and start your musical journey with us today!
         </p>
       </section>
 
       {/* Tool Cards Section */}
-      <section className = "grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className = "grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
 
       <ToolCard
         title = "Interactive Fretboard"
