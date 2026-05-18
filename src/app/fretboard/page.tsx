@@ -1,7 +1,6 @@
 // Fretboard page for the Serenity Strings website.
 
 import React from 'react'
-import clsx from "clsx";
 
 import { Metadata } from 'next';
 
