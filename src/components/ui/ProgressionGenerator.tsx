@@ -8,19 +8,13 @@ const ProgressionGenerator = () => {
   const [selectedMode, setSelectedMode] = useState<string>("major")
   const [selectedMood, setSelectedMood] = useState<string>("happy")
 
-  const [generatedProgression, setGeneratedProgression] = useState<string[]>([])
+  const [generatedRomanNumerals, setGeneratedRomanNumerals] = useState<string[]>([])
+  const [generatedSuggestedScale, setGeneratedSuggestedScale] = useState<string[]>([])
+  const [generatedChords, setGeneratedChords] = useState<string[]>([])
 
   const keys = [
     "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"
   ];
-
-  // const chords = [
-  //   "Major",
-  //   "Minor",
-  //   "Dominant 7",
-  //   "Major 7",
-  //   "Minor 7",
-  // ];
 
   const scales = [
     "Major",
@@ -73,12 +67,28 @@ const ProgressionGenerator = () => {
     ],
   };
 
+  // const [generatedRomanNumerals, setGeneratedRomanNumerals] = useState<string[]>([])
+  // const [generatedSuggestedScale, setGeneratedSuggestedScale] = useState<string[]>([])
+  // const [generatedChords, setGeneratedChords] = useState<string[]>([])
 
-  // const getScaleNotes = () => {};
+  const handleGenerate = () => {
+      let chosenProgression: string[][] = [];
 
-  // const generateChords = () => {};
+      if(selectedMode === "Major") 
+        {
+          chosenProgression = commonProgressions.major;
+        }
+      else if(selectedMode === "Minor")
+        {
+          chosenProgression = commonProgressions.minor;
+        }
 
-  const getSuggestedScales = () => {};
+      let randomIndex = Math.floor(Math.random() * chosenProgression.length);
+      setGeneratedRomanNumerals(chosenProgression[randomIndex]);
+
+    // setGeneratedSuggestedScale([]);
+    // setGeneratedChords([]);
+  };
 
   return (
     <main className = "p-4 sm:p-6 lg:p-8 md:mt-5 max-w-5xl mx-auto border border-slate-300 bg-slate-800">
@@ -139,7 +149,7 @@ const ProgressionGenerator = () => {
           </div>
 
           <div className = "flex flex-col m-2 md:m-3">
-            <button className="bg-indigo-500 px-4 mt-5 py-2 rounded hover:bg-indigo-400">
+            <button onClick = {handleGenerate} className="bg-indigo-500 px-4 mt-5 py-2 rounded hover:bg-indigo-400">
               Generate Progression
             </button>
           </div>
@@ -149,7 +159,7 @@ const ProgressionGenerator = () => {
       <section className="bg-slate-800 p-6 rounded-xl border border-slate-700 mb-4">
 
         <h1 className = "text-m md:text-xl font-bold mb-3"> Chords: </h1>
-        <h1 className = "text-m md:text-xl font-bold mb-3"> Roman Numerals: </h1>
+        <h1 className = "text-m md:text-xl font-bold mb-3"> Roman Numerals: {generatedRomanNumerals.join(" ")} </h1>
 
         <div className = "flex m-2 md:m-3">
           <button className="bg-indigo-500 px-4 mt-5 py-2 rounded hover:bg-indigo-400">
